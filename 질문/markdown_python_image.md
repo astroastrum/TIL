@@ -2,17 +2,13 @@
 
 ​		강사님 원본
 
-​		![](마크다운_파이썬_이미지.assets/파이썬_이미지_Lecturer.png)
+​		![](markdown_python_image.assets/파이썬_이미지_Lecturer.png)
 
 
 
 ​		최정아
 
-​		![]()
-
-
-
-![마크다운_이미지](C:\Users\82103\Desktop\마크다운_이미지.png)
+​		![](markdown_python_image.assets/마크다운_이미지.png)
 
 
 
