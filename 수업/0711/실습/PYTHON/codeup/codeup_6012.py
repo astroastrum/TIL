@@ -1,0 +1,6 @@
+a = input(1)
+b = input(2)
+a=int(1)
+b=int(2)
+print(1)
+print(2)
