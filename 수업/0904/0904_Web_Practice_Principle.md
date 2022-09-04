@@ -9,4 +9,16 @@
 
 * margin과 padding은 디자이너의 영역입니다.
 
+* background-image에 url 설정
+
+  * 절대 경로
+    * background image에  url을 넣을 때 주소의 시작이 **슬래쉬(/)**이면 절대 경로라는 뜻입니다. 슬래쉬를 붙이는 패턴은 서버에서 사용합니다.
+  * 컨텐츠 영역이 비어있으면 비어있기 때문에 높이를 따로 설정해 주어야 합니다.
+
+  ```css
+  .banner {
+      background-image: url('../assets/apparel.jpeg');
+  }
+  ```
+
   
