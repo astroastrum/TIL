@@ -21,4 +21,59 @@
   }
   ```
 
-  
+
+
+
+* 이미지와 배경 이미지(background image)의 차이점
+
+  * 이미지는 어떠한 목적을 가지고 **마크업**이 되어있고 배경 이미지는 **CSS의 타입**입니다.
+
+    
+
+* **display: flex**
+
+  * 수평 방향으로 정렬
+
+  * display flex 전
+
+    ![](0904_Web_Practice_Principle.assets/no_display_flex.png)
+
+  * display flex 후
+
+    ![](0904_Web_Practice_Principle.assets/display_flex.png)
+
+
+
+
+
+* Overlay 
+  * overlay는 display를 조작하거나 투명도를 조작합니다.
+    * display를 바꾸는 형식 등 여러 방식이 있습니다.
+      * display: none;
+      * display: block;
+      * fade in overlay
+
+
+
+* HTML <section> 태그
+
+  * `부분`이라는 뜻
+
+  * 독립적인 부분(section)
+
+  * 제목 요소(h1~h6)를 자식 요소로 생각하기도 합니다.
+
+    
+
+* HTML <div> 태그
+
+  * `어떤 영역` 또는 `특정 영역`이라는 뜻
+  * 블록 타입
+  * 다양한 HTML 타입들 (예를 들어, image, text 등)을 하나의 묶음으로 표헌합니다.
+  * 스타일 입힐 때 **컨테이너(container)**로 쓰입니다.
+    * div class="container"
+
+
+
+* HTML <span> 태그
+  * **인라인 요소**를 한묶음으로 표현할 때 사용합니다.
