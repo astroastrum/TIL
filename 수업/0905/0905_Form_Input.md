@@ -91,10 +91,47 @@
 
 * 언제 사용하는가?
   * **데이터를 서버에 보낼 때** 
+  
 * Form 태그의 속성은?
   * **action**
     * form을 작성하면 서버에 제출됩니다. **서버에 제출이 되는 주소** 입니다.
+    
     * 네이버에 검색하면 주소의 결과가 나옵니다.
+    
+      
 
 
 
+## Input 태그
+
+* Input을 사용했을 때 입력창 생성
+
+  ![](0905_Form_Input.assets/input.png)
+
+
+
+* username : <input type="text">
+
+  ![](0905_Form_Input.assets/input_type_text.png)
+
+
+
+* password : <input type="password" name="name">
+
+  ![](0905_Form_Input.assets/username_password.png)
+
+
+
+* input의 type은 다양합니다.
+
+  * input의 type이 username일때
+
+    ![](0905_Form_Input.assets/input_type_username.png)
+
+
+
+* input 요소는 **인라인** 요소
+
+* 처음 태그를 보았을 때 태그가 어떤 기본 display를 지녔는지 반드시 알아야 합니다.
+
+  
