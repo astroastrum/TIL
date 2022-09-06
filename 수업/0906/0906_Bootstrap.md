@@ -95,3 +95,6 @@
   * 스타일과 Javascript 부분이 있습니다.
   * Accordion
     * **id와 data-bs-target**를 일치(매핑)시켜야 버튼이 동작합니다.
+  * Card
+    * 코드 복붙하고 inline style을 반드시 확인
+      * 코드 구조 분석 필요
