@@ -47,14 +47,19 @@
 
     * Column
       * 컨텐츠의 영역
+      
     * Gutter
       * 컨텐츠 사이의 영역
+      
       * 홈통, 도랑이라는 다양한 뜻이 있으며 단어 자체가 `통로`라는 모습을 나타내기 때문에 컨텐츠 사이의 공간을 연상할 수 있습니다. 
+      
+        ![](0907_Grid_System.assets/River_Stream.png)
+      
     * Container
       * 컨텐츠를 보관하는 영역
-
+  
   * Bootstrap Grid System
-
+  
     * Grid System은 Flexbox로 만들어졌습니다.
     * 컨텐츠를 움직이려면?
       * column, rows, container을 사용해야 합니다.
@@ -63,9 +68,9 @@
       * 6개의 **Grid Breakpoints**
         * Breakpoint는 구분점이라는 뜻이며 px(픽셀)의 단계적 표준점을 나타냅니다.
           * xs, s, md, lg, xl, xxls
-
+  
   * Grid System 코드 구조
-
+  
     ```html
     <div class="container">
         <div class="row">
@@ -80,3 +85,5 @@
 
 
 
+* Citation
+  * https://www.britannica.com/place/Tigris-Euphrates-river-system
