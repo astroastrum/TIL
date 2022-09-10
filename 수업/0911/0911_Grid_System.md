@@ -32,7 +32,11 @@
   * Large
   * Extra Large
 
-
+* Bootstrap **공백** 조절하기
+  * py 
+    * Padding Y축 = Top, Bottom
+  * px
+    * Padding X축 = Left, Right
 
 
 
