@@ -22,3 +22,36 @@
     * Viewport 기준
   * 정적 위치(static position)
     * 브라우저에 따라서 배치
+
+* img-fluid
+
+  * 반응형 이미지
+    * 부모 요소에 맞추어 자동으로 이미지 크기를 조절해 줍니다.
+
+* container
+
+  * 웹 페이지의 컨테이너에 맞추어 크기를 지정합니다.
+  * ex) 카드를 배치할 때 div.container로 감싸줍니다.
+
+* container-fluid
+
+  * 좌우 여백을 지정하지 않습니다.
+
+* Row columns
+
+  * 개수를 균등하게 배치
+
+    ```html
+    한 줄에 나란히 2개 배치
+    <div class="row row-cols-2">
+    </div>
+    
+    col-sm-6과 같은 칸수 변화는 개별적으로 지정할 수 있음
+    ```
+
+* Badge 
+
+  * background colors(Bootstrap)
+    * 상하좌우 배치는 position 사용
+
+  
