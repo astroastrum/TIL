@@ -19,6 +19,8 @@
 
   * 설계된 구성 요소를 객체로 여겨 다듬는 트리 모델 
 
+    * 즉, DOC에 있는 내용을 선택하고 조작할 수 있습니다.
+
   * 어떻게 시작하는가?
 
     * JavaScript 영역 생성
@@ -40,10 +42,11 @@
         ![](0915_JavaScript.assets/Console창.png)
 
       * const body = document.querySelector('body')
-
+  
         * const
-          * 변수를 선언할 때 키워드를 사용합니다.
-
+          * 변수를 선언할 때 키워드를 사용합니다. 
+          * JavaScript는 변수 선언할 때 반드시 앞에 키워드를 작성해야 합니다.
+        
         ```html
         <!DOCTYPE html>
         <html lang="en">
@@ -69,23 +72,47 @@
         </body>
         </html>
         ```
-
         
-
+        
+        
         ![](0915_JavaScript.assets/Const.png)
-
+  
       
-
+  
       
-
+  
     * typeof
-
+  
       ```html
       typeof()
       ```
-
+  
+      
+  
+    * Select
+  
+      * 선택자를 통해 선택할 때 두가지 방법이 있습니다.
+  
+        * querySelector
+  
+          * 하나를 선택하는 방법
+  
+        * querySelectorAll
+  
+          * 모든 결과를 선택하는 방법
+  
+            
+  
+    * toggle
+  
+      * replace보다 더 많이 사용하는 객체
+      * 껐다, 켰다 (Modal)
+        * class가 나타나거나 없어집니다
+  
+      
+  
     * Event 
-
+  
       ```html
       <body>
         <h1>Event</h1>
@@ -102,7 +129,7 @@
       ```
 
 
-  
+
 
 * BOM(Browser Object Model)
 
