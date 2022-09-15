@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- JavaScript 코드를 작성하는 공간 -->
+  <script>
+    console.log('Hello, JavaScript')
+    // h2 요소 생성 //  
+    const title = document.createElement('h2')
+    // innerText 작성 //
+    title.innerText= 'Love JavaScript'
+    // 선택자로 body태그를 가져온 후 body태그에 자식 요소로 포함 //
+    // 즉, 태그를 사용하지 않아도 document에 작성 가능 //
+    const body = document.querySelector('body')
+    body.appendChild(title)
+  </script>
+</body>
+</html>
+
+
