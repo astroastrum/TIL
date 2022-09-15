@@ -15,7 +15,9 @@
 
 * DOM(Document Object Model)
 
-  * HTML 조작
+  * HTML 문서를 자유롭게 다듬는 문서 프로그래밍 인터페이스
+
+  * 설계된 구성 요소를 객체로 여겨 다듬는 트리 모델 
 
   * 어떻게 시작하는가?
 
@@ -99,4 +101,10 @@
       </body>
       ```
 
-      
+
+  
+
+* BOM(Browser Object Model)
+
+  * JavaScript가 브라우저와 상호작용하기 위한 모델
+  * 브라우저의 창(window) 조작 가능 
