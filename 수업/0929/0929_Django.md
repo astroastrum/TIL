@@ -1,6 +1,6 @@
 ## Django
 
-* 핵심 명렁어
+* 핵심 명령어
 
   ```django
   mkdir [폴더 이름]
