@@ -8,9 +8,9 @@
   
   class ArticleForm(forms.ModelForm):
   	class Meta:
-  		# Article model에 있는
+  		# Article model에 있는 (어떠한 DB의)
   		model = Article
-  		# 모든 필드를 내가 가져다가 사용하겠다
+  		# 모든 필드를 내가 가져다가 사용하겠다 (어떠한 필드)
   		fields = '__all__'
   		# fields = ['title', 'content']
   ```
@@ -21,6 +21,7 @@
 
   ```django
   def create(request):
+  		# 사용자의 input 값을 받아서
   		article_form = ArticleForm()
   	context = {
   		'article_form': article_form
