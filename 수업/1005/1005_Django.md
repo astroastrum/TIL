@@ -56,8 +56,32 @@
 
 * ModelForm
 
-  * 대체 기능
+  * ModelForm 선언
 
+    * 선언된 모델에 따른 필드 구성
+      1. Form 생성
+         * 어떤 필드를 구성할 것인가 ('name', 'value') 
+         * 어디로 보낼 것인가 ('action', 'method')
+      2. 유효성 검사
+  
+    ```django
+    from django import forms
+    from .models import Article
+    
+    
+    # ModelForm 선언
+    class ArticleForm(forms.ModelForm):
+      
+      class Meta:
+        model = Article
+        # 선언된 모델에 따른 필드들
+        fields = ['title', 'content']
+    ```
+  
+    
+  
+  * 대체 기능
+  
     ```django
     forms.py에서 
     
@@ -80,16 +104,16 @@
     {{ article_form.as_p }}
     
     ```
-
+  
     
-
+  
   * 필드가 많을 경우 ModelForm에서 관리
-
+  
   * 유효성 검사  
-
+  
     * ex) Google에 로그인할 때
     * 유효성 검사가 실패했을 때 어떤 결과를 보여주기도 합니다.
-
+  
     ```django
     def create(request):
       # 데이터의 개수가 많아지면 많아질수록 request.POST의 개수도 많아진다
@@ -103,5 +127,77 @@
     		print('유효하지 않습니다')
         return redirect('articles:index')
     ```
+  
+    
+
+* admin 사이트
+
+  * http://localhost:8000/admin
+
+  * admin.py에서 관리
+
+  * 사용자 이름과 비밀번호 설정
+
+    ```django
+    python manage.py createsuperuser
+    ```
 
     
+
+  * admin 등록
+
+    * 모델 **데이터베이스** 관리
+
+      ```django
+      # admin 사이트에 Article 등록
+      admin.site.register(Article)
+      ```
+
+      
+
+* 관리자 폼 커스터마이징
+
+  ```django
+  class ArticleAdmin(admin.ModelAdmin):
+    fields = ['title', 'created_at', 'updated_at']
+  ```
+
+
+
+* Static files
+
+  * **정적 파일**에 대한 기능
+
+  * settings.py의 STATIC_URL에 '/static/' 설정이 이미 존재
+
+  * INSTALLED_APPS에 'django.contrib.staticfiles'는 정적 파일을 관리하는 것
+
+  * articles에 images 파일 만들어서 이미지 삽입 가능
+
+    ```django
+    {% load static %}
+    <img src="{% static 'images/autumn.jpeg' %}" alt="">
+    ```
+
+    
+
+  * CSS 
+
+    ```django
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    ```
+
+    
+
+* 배포
+
+  * Bootstrap5
+
+    * ```django
+      {% load django_bootstrap5 %}
+      {% bootstrap_css %}
+      {% bootstrap_javascript %}
+      {% bootstrap_form article_form %}
+      ```
+
+      
