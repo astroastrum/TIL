@@ -136,6 +136,209 @@
       
   # imagekit installation
   pip install django-imagekit
+  
+  
+  # URL 설정
+  <img src="{{ article.image.url }}" alt="{{ article.image }}">
+  ```
+
+  
+
+* articles/models.py
+
+  ```python
+  articles/models.py
+  
+  from imagekit.models import ProcessedImageField
+  from imagekit.processors import ResizeToFill
+  from django.db import models
+  
+  # Create your models here.
+  # 1. 모델 설계 (DB 스키마 설계)
+  from django.conf import settings
+  
+  class Article(models.Model):
+      title = models.CharField(max_length=20)
+      content = models.TextField()
+      created_at = models.DateTimeField(auto_now_add=True)
+      updated_at = models.DateTimeField(auto_now=True)
+      image = ProcessedImageField(upload_to='images/', blank=True,
+                                  processors=[ResizeToFill(1200, 960)],
+                                  format='JPEG',
+                                  options={'quality': 80})
+      user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+                              
+  class Comment(models.Model):
+      content = models.TextField()
+      created_at = models.DateTimeField(auto_now_add=True)
+      article = models.ForeignKey(Article, on_delete=models.CASCADE)
+      user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+  ```
+
+  
+
+* articles/forms.py
+
+  ```python
+  from django import forms
+  from .models import Article, Comment
+  
+  class ArticleForm(forms.ModelForm):
+  
+      class Meta:
+          model = Article
+          fields = ['title', 'content', 'image']
+  
+  class CommentForm(forms.ModelForm):
+  
+      class Meta:
+          model = Comment 
+          fields = ['content',]
+  ```
+
+  
+
+* articles/views.py
+
+  ```python
+  from xml.etree.ElementTree import Comment
+  from django.shortcuts import render, redirect
+  from django.contrib import messages
+  from django.contrib.auth.decorators import login_required
+  from .models import Article
+  from .forms import ArticleForm, CommentForm
+  
+  # Create your views here.
+  
+  # 요청 정보를 받는다
+  def index(request):
+      # 게시글을 가져온다
+      articles = Article.objects.order_by('-pk')
+      # Template에 전달한다. 
+      context = {
+          'articles': articles
+      }
+      return render(request, 'articles/index.html', context)
+  
+  # def new(request):
+  #     article_form = ArticleForm()
+  #     context = {
+  #         'article_form': article_form
+  #     }
+  #     return render(request, 'articles/new.html', context=context)
+  
+  @login_required
+  def create(request):
+      if request.method == 'POST':
+          article_form = ArticleForm(request.POST, request.FILES)
+          if article_form.is_valid():
+              article = article_form.save(commit=False)
+              # 로그인한 유저는 작성자
+              article.user = request.user 
+              article.save()
+              messages.success(request, '글 작성이 완료되었습니다.')
+              return redirect('articles:index')
+      else: 
+          article_form = ArticleForm()
+      context = {
+          'article_form': article_form
+      }
+      return render(request, 'articles/form.html', context=context)
+  
+  def detail(request, pk):
+      # 특정 글을 가져온다.
+      article = Article.objects.get(pk=pk)
+      comment_form = CommentForm()
+      # template에 객체 전달
+      context = {
+          'article': article,
+          'comments': article.comment_set.all(),
+          'comment_form': comment_form,
+      }
+      return render(request, 'articles/detail.html', context)
+  
+  @login_required
+  def update(request, pk):
+      article = Article.objects.get(pk=pk)
+      if request.user == article.user: 
+          if request.method == 'POST':
+              # POST : input 값 가져와서, 검증하고, DB에 저장
+              article_form = ArticleForm(request.POST, request.FILES, instance=article)
+              if article_form.is_valid():
+                  # 유효성 검사 통과하면 저장하고, 상세보기 페이지로
+                  article_form.save()
+                  messages.success(request, '글이 수정되었습니다.')
+                  return redirect('articles:detail', article.pk)
+              # 유효성 검사 통과하지 않으면 => context 부터해서 오류메시지 담긴 article_form을 랜더링
+          else:
+              # GET : Form을 제공
+              article_form = ArticleForm(instance=article)
+          context = {
+              'article_form': article_form
+          }
+          return render(request, 'articles/form.html', context)
+      else:
+          # 작성자가 아닐 때
+          # (1) 403 에러메시지를 던져버린다. 
+          # from django.http import HttpResponseForbidden
+          # return HttpResponseForbidden()
+          # (2) flash message 활용
+          messages.warning(request, '작성자만 수정 가능.')
+          return redirect('articles:detail', article.pk)
+  
+  @login_required
+  def comment_create(request, pk):
+      article = Article.objects.get(pk=pk)
+      comment_form = CommentForm(request.POST)
+      if comment_form.is_valid():
+          comment = comment_form.save(commit=False)
+          comment.article = article
+          comment.user = request.user
+          comment.save()
+      return redirect('articles:detail', article.pk)
+  ```
+
+  
+
+* articles/detail.html
+
+  ```python
+  {% extends 'base.html' %}
+  {% load django_bootstrap5 %}
+  
+  {% block body %} 
+  <h1>{{ article.title }}</h1>
+  <p>{{ article.pk }}번 게시글</p>
+  <h3><a href="{% url 'accounts:detail' article.user.pk %}">{{ article.user.username }}</a></h3>
+  <p>{{ article.created_at|date:"SHORT_DATETIME_FORMAT" }} | {{ article.updated_at|date:"y-m-d D" }}</p>
+  <p>{{ article.content }} </p>
+  
+  {% if article.image %}
+      <img src="{{ article.image.url }}" alt="{{ article.image }}" width="400" height="300">
+  {% endif %}
+  
+  
+  {% if request.user == article.user %}
+  <p>
+      <a href="{% url 'articles:update' article.pk %}">수정하기</a>
+  </p>
+  {% endif %}
+  <h4 class="my-3">댓글</h4>
+  {% if request.user.is_authenticated %}
+  <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
+      {% csrf_token %}
+      {% bootstrap_form comment_form layout='inline'%}
+      {% bootstrap_button button_type="submit" content="OK" %}
+  </form>
+  {% endif %}
+  <hr>
+  {% for comment in comments %}
+      <p> {{ comment.user.username }} | {{ comment.content }}</p>
+      <hr>    
+  {% empty %}
+      <p>댓글이 없어요 ㅠ_ㅠ</p>
+  {% endfor %}
+  {% endblock %}
   ```
 
   
