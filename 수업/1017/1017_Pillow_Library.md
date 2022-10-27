@@ -11,8 +11,10 @@
   
   # ImageField 지정
   # 사용자가 업로드한 이미지를 어디로 업로드하게 할것인가?
-  models.py에
-  image = models.ImageField(upload_to='images/', blank=True)
+  articles/models.py에
+  class Article(models.Model):
+      
+  	image = models.ImageField(upload_to='images/', blank=True)
   
   
   python manage.py makemigrations
@@ -21,7 +23,7 @@
   
   
   # form에 반영
-  # forms.py에 'image' 추가
+  # forms.py에 'image' 추가하면 이미지를 업로드 할 수 있음
   from django import forms
   from .models import Article
   
