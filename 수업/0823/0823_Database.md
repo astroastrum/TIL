@@ -11,6 +11,6 @@
 
 
 
-## ERD
+## Entity Relationship Diagram (ERD)
 
 * Instagram의 개체들처럼 엔티티의 관계를 다이어그램으로 나타낸 것을 ERD라고 합니다. 
