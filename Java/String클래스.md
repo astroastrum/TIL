@@ -4,7 +4,7 @@
 
 * 객체지향개념 이후, 데이터와 기능(함수)을 함께 클래스에 묶어서 사용
 
-* 내용 변경할 수 없음 (Immutable c)
+* 내용 변경할 수 없음 (Immutable class)
 
   ```java
   String str = "Class";
