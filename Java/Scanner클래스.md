@@ -20,3 +20,28 @@
   ```
 
   
+
+* 알고리즘
+
+  ```java
+  import java.util.Scanner; // java.util 패키지에 있는 Scanner 클래스를 import함
+  public class Main { // Main.java 파일명과 클래스 이름이 같아야만 하는 JAVA의 규칙
+      public static void main(String[] args) {
+          Scanner sc = new Scanner(System.in); 
+          // Scanner클래스는 객체를 생성해야만 사용가능
+          // System.in은 화면에서 입력을 받는다는 뜻
+          int N = sc.nextInt();
+          // 입력받은 정수를 변수 N에 저장
+          
+          String sNum = sc.next(); // 입력값을 sNum에 저장
+          char[] cNum = sNum.toCharArray(); // char[]형 변수로 변환
+          int sum = 0;
+          for (int i = 0;, i < cNum.length; i++) {
+              sum += cNum[i] - '0';
+          }
+          System.out.print(sum);
+      }
+  }
+  ```
+
+  
