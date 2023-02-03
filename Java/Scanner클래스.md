@@ -30,7 +30,7 @@
           Scanner sc = new Scanner(System.in); 
           // Scanner클래스는 객체를 생성해야만 사용가능
           // System.in은 화면에서 입력을 받는다는 뜻
-          // new클래스 타입의 인스턴스 생성
+          // new 연산자를 사용하여 클래스 타입의 인스턴스 생성
           int N = sc.nextInt();
           // 입력받은 정수를 변수 N에 저장
           
