@@ -1,5 +1,8 @@
 ## Scanner클래스
 
+* Scanner클래스
+  * 화면으로부터 입력받기
+
 * 먼저 한 문장을 입력합니다.
 
   ```java
@@ -33,6 +36,7 @@
           // new 연산자를 사용하여 클래스 타입의 인스턴스 생성
           int N = sc.nextInt();
           // 입력받은 정수를 변수 N에 저장
+          // nextInt()는 입력받을 값이 숫자라는 의미
           
           String sNum = sc.next(); // 입력값을 sNum에 저장
           char[] cNum = sNum.toCharArray(); // char[]형 변수로 변환
