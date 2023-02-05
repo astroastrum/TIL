@@ -37,6 +37,7 @@
           int N = sc.nextInt();
           // 입력받은 정수를 변수 N에 저장
           // nextInt()는 입력받을 값이 숫자라는 의미
+          // int를 입력받을 때는 nextInt 메서드 사용
           
           String sNum = sc.next(); // 입력값을 sNum에 저장
           char[] cNum = sNum.toCharArray(); // char[]형 변수로 변환
