@@ -42,6 +42,7 @@
           String sNum = sc.next(); // 입력값을 sNum에 저장
           char[] cNum = sNum.toCharArray(); // char[]형 변수로 변환
           int sum = 0;
+          // cNum 길이만큼 반복
           for (int i = 0;, i < cNum.length; i++) { // 0부터 cNum 길이까지 0씩 증가
               sum += cNum[i] - '0'; 
           }
